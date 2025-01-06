@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-# Afficher les ports en écoute avec le PID et le nom du programme
+# Affichage des connexions Internet actives (seulement les serveurs)
 echo "Active Internet connections (only servers)"
 echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
 ss -tuln -p | grep LISTEN
