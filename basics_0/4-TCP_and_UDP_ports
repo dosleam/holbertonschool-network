@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Affichage des connexions actives TCP et UDP (ports en écoute) avec PID et nom du programme
-netstat -tulnen
-netstat -lxp
+# This script displays listening TCP/UDP sockets with
+# their corresponding PID and program name
+netstat -l -p
