@@ -1,4 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-#listening TCP and UDP ports
-netstat -tulpn
+# Affiche les connexions actives TCP et UDP (en écoute seulement)
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+ss -tuln -p | grep -E 'State|LISTEN'
+
+# Affiche les connexions Unix (en écoute seulement)
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+ss -xlpn
