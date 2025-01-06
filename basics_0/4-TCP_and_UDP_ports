@@ -2,4 +2,4 @@
 
 # Afficher les ports en écoute avec le PID et le nom du programme
 echo "Active Internet connections (only servers)"
-sudo ss -tulnp
+sudo ss -lp
