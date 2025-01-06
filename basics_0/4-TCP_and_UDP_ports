@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Afficher les ports en écoute avec le PID et le nom du programme
 sudo netstat -tunlp | grep LISTEN
