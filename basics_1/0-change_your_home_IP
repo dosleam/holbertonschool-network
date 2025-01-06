@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Modify the /etc/hosts file to meet the new IP configurations
+
+# Backup the original hosts file
+sudo cp /etc/hosts /etc/hosts.bak
+
+# Modify localhost to resolve to 127.0.0.2
+sudo sed -i 's/127.0.0.1/127.0.0.2/' /etc/hosts
+
+# Modify facebook.com to resolve to 8.8.8.8
+sudo sed -i 's/157.240.11.35/8.8.8.8/' /etc/hosts
+
+# Print the result
+echo "localhost resolves to:"
+ping -c 1 localhost
+
+echo "facebook.com resolves to:"
+ping -c 1 facebook.com
