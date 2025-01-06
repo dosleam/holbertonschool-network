@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Vérifier si un argument a été passé
 if [ -z "$1" ]; then
