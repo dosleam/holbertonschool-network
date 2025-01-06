@@ -1,3 +1,5 @@
-#!/bin/env bash
-# netstat to display listening (-l) ports and the PID associated (-p)
-netstat -lp
+#!/bin/bash
+
+# Affichage des connexions actives TCP et UDP (ports en écoute) avec PID et nom du programme
+netstat -tulnen
+netstat -lx
