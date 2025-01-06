@@ -1,9 +1,28 @@
-#!/usr/bin/env bash
-# Backup the original /etc/hosts file before making changes
+#!/bin/bash
+
+# Sauvegarde du fichier /etc/hosts avant modification
 sudo cp /etc/hosts /etc/hosts.bak
-# Modify the /etc/hosts file
+
+# Modifier localhost pour qu'il pointe vers 127.0.0.2
 sudo sed -i 's/^127.0.0.1.*localhost/127.0.0.2 localhost/' /etc/hosts
+
+# Vérifier si localhost a bien été modifié
+if grep -q "127.0.0.2 localhost" /etc/hosts; then
+    echo "Modification de localhost réussie"
+else
+    echo "Erreur lors de la modification de localhost"
+fi
+
+# Ajouter ou modifier l'entrée pour facebook.com, en la faisant pointer vers 8.8.8.8
 sudo sed -i '/facebook.com/d' /etc/hosts
 echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
-# Display the updated /etc/hosts file to confirm changes
+
+# Vérifier si facebook.com a bien été redirigé vers 8.8.8.8
+if grep -q "8.8.8.8 facebook.com" /etc/hosts; then
+    echo "Modification de facebook.com réussie"
+else
+    echo "Erreur lors de la modification de facebook.com"
+fi
+
+# Afficher le contenu du fichier /etc/hosts
 cat /etc/hosts
