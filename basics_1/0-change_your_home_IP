@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Backup the original /etc/hosts file before making changes
-#+ Modify the /etc/hosts file
-#+ Display the updated /etc/hosts file to confirm changes
-sudo cp /etc/hosts /etc/hosts.bak
-sudo sed -i 's/^127.0.0.1.*localhost/127.0.0.2 localhost/' /etc/hosts
-sudo sed -i '/facebook.com/d' /etc/hosts
-echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
-cat /etc/hosts
+# sauvegarde le fichier hosts dans hosts.backup
+cp /etc/hosts /etc/hosts.backup
+# supprime le contenue initial
+echo -n > /etc/hosts
+# modifie l'adresse localhost
+echo "127.0.0.1 localhost" >> /etc/hosts
+# modifie l'adresse facebook.com
+echo "8.8.8.8 facebook.com" >> /etc/hosts
