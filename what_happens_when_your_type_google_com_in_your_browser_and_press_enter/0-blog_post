@@ -1,0 +1,101 @@
+## What Happens When You Type https://www.google.com in Your Browser and Press Enter?
+
+When you type a URL like `https://www.google.com` into your browser and hit Enter, a series of intricate processes occur under the hood to fetch and display the web page you requested. Let’s break this process down step by step, covering the key components: DNS request, TCP/IP, firewall, HTTPS/SSL, load balancer, web server, application server, and database.
+
+---
+
+### 1. **DNS Request**
+The first step is translating the human-readable URL (`www.google.com`) into an IP address that computers can understand. This is done through the Domain Name System (DNS):
+
+1. **Browser Cache**: The browser checks if it already has the IP address cached.
+2. **OS Cache**: If not found, the operating system’s DNS resolver is queried.
+3. **Router Cache**: If still unresolved, the query moves to your router, which may have a cached result.
+4. **ISP DNS Server**: Finally, the request is sent to the ISP’s DNS server. If it does not have the IP address, it queries authoritative DNS servers until it finds the correct IP address (e.g., `142.250.190.78`).
+
+---
+
+### 2. **TCP/IP**
+Now that the IP address is known, your browser initiates a connection to the target server using the **Transmission Control Protocol (TCP)** and the Internet Protocol (IP):
+
+1. **Three-Way Handshake**:
+   - The browser sends a SYN (synchronize) packet to the server.
+   - The server responds with a SYN-ACK (synchronize-acknowledge) packet.
+   - The browser sends an ACK (acknowledge) packet to establish the connection.
+2. **Data Transmission**:
+   - Packets of data are sent using IP to route them through the internet. Routers and switches direct these packets to the destination server.
+
+---
+
+### 3. **Firewall**
+Firewalls along the way (on your device, network, or the server’s infrastructure) inspect the traffic to ensure it is secure and permitted. They block suspicious or unauthorized requests to protect systems from threats.
+
+---
+
+### 4. **HTTPS and SSL/TLS**
+Because the URL starts with `https`, the browser establishes a secure connection using SSL/TLS (Secure Sockets Layer/Transport Layer Security):
+
+1. **Certificate Validation**:
+   - The browser requests the server’s SSL certificate.
+   - The server sends its certificate, which includes the public key and is signed by a trusted Certificate Authority (CA).
+   - The browser verifies the certificate’s validity.
+2. **Key Exchange**:
+   - A secure symmetric key is negotiated using the server’s public key.
+   - This key encrypts the communication, ensuring confidentiality and integrity.
+
+---
+
+### 5. **Load Balancer**
+For large-scale applications like Google, the request is routed through a **load balancer**, which:
+
+1. Distributes incoming traffic across multiple servers to prevent any single server from being overwhelmed.
+2. Ensures high availability and scalability by rerouting traffic if a server goes down.
+
+---
+
+### 6. **Web Server**
+The load balancer forwards the request to a **web server** (e.g., Apache, Nginx):
+
+1. **Request Handling**:
+   - The web server receives the request and determines how to process it.
+   - Static resources (e.g., HTML, CSS, images) are served directly.
+2. **Dynamic Content**:
+   - For dynamic requests, the web server forwards the request to an application server.
+
+---
+
+### 7. **Application Server**
+The **application server** (e.g., Node.js, Django, Spring) contains the application logic. Here’s what happens:
+
+1. **Processing Logic**:
+   - The server executes the business logic required to handle the request. For example, retrieving user-specific data or performing calculations.
+2. **Database Queries**:
+   - If needed, the application server queries the database to fetch or store data.
+
+---
+
+### 8. **Database**
+The database (e.g., MySQL, PostgreSQL, MongoDB) manages structured or unstructured data:
+
+1. **Query Execution**:
+   - The application server sends a SQL or NoSQL query to the database.
+   - The database retrieves the requested data and sends it back to the application server.
+2. **Optimization**:
+   - Indexes, caching, and query optimization ensure fast and efficient data retrieval.
+
+---
+
+### Final Steps
+1. **Response Assembly**:
+   - The application server combines the retrieved data with templates or APIs to generate a complete HTTP response.
+2. **Delivery to Browser**:
+   - The web server sends the response back to the browser.
+3. **Rendering**:
+   - The browser parses the HTML, CSS, and JavaScript to render the webpage.
+
+---
+
+### Conclusion
+Typing a URL and pressing Enter triggers a cascade of sophisticated processes, from DNS resolution to database queries, all executed in milliseconds. Understanding this workflow is essential for software engineers, as it encapsulates the core principles of web technologies and infrastructure.
+
+By mastering these concepts, you’re well-equipped to tackle challenges in software development, systems design, and beyond.
+
